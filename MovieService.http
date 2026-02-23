@@ -1,21 +1,21 @@
 @MovieService_HostAddress = http://localhost:5083
 
-### Получить все фильмы
+### РџРѕР»СѓС‡РёС‚СЊ РІСЃРµ С„РёР»СЊРјС‹
 GET {{MovieService_HostAddress}}/api/movies
 Accept: application/json
 
-### Получить фильм по ID (например 1)
+### РџРѕР»СѓС‡РёС‚СЊ С„РёР»СЊРј РїРѕ ID (РЅР°РїСЂРёРјРµСЂ 1)
 GET {{MovieService_HostAddress}}/api/movies/1
 Accept: application/json
 
-### Получить информацию для стриминга
+### РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РґР»СЏ СЃС‚СЂРёРјРёРЅРіР°
 GET {{MovieService_HostAddress}}/api/movies/1/stream
 Accept: application/json
 
-### Получить master playlist
+### РџРѕР»СѓС‡РёС‚СЊ master playlist
 GET {{MovieService_HostAddress}}/api/stream/1/master.m3u8
 Accept: application/vnd.apple.mpegurl
 
-### Проверить наличие видео
+### РџСЂРѕРІРµСЂРёС‚СЊ РЅР°Р»РёС‡РёРµ РІРёРґРµРѕ
 GET {{MovieService_HostAddress}}/api/stream/test/1
 Accept: application/json
