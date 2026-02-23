@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Player</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Movie Player</h1>
+            <a href="/index.html" class="back-button">← На главную</a>
+        </header>
+
+        <main>
+            <div class="player-container" id="playerContainer" style="display: none;">
+                <div class="video-wrapper">
+                    <video id="videoPlayer" class="video-player" controls></video>
+                    <div class="loading-overlay" id="loadingOverlay">
+                        <div class="spinner"></div>
+                        <span>Загрузка видео...</span>
+                    </div>
+                </div>
+
+                <div class="player-info">
+                    <h2 id="movieTitle"></h2>
+
+                    <div class="player-controls">
+                        <div class="quality-selector">
+                            <label for="qualitySelect">Качество:</label>
+                            <select id="qualitySelect" onchange="changeQuality(this.value)">
+                                <option value="auto">Авто</option>
+                            </select>
+                        </div>
+
+                        <div class="stats" id="stats">
+                            <div>Битрейт: <span id="bitrate">-</span></div>
+                            <div>Разрешение: <span id="resolution">-</span></div>
+                            <div>Буфер: <span id="buffer">-</span></div>
+                        </div>
+                    </div>
+
+                    <div class="error-message" id="errorMessage"></div>
+                </div>
+            </div>
+
+            <div class="no-player" id="noPlayer">
+                <p>Фильм не выбран. <a href="/index.html">Вернитесь на главную</a> и выберите фильм.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- HLS.js библиотека -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <!-- Наш скрипт -->
+    <script src="/js/player.js"></script>
+</body>
+</html>

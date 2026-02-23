@@ -1,0 +1,93 @@
+## Игнорировать файлы Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Игнорировать папки сборки
+bin/
+obj/
+Debug/
+Release/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ilk
+*.log
+
+## Игнорировать пользовательские настройки
+appsettings.Development.json
+appsettings.Production.json
+*.userprefs
+
+## Игнорировать папку с видео (ОЧЕНЬ ВАЖНО!)
+/Videos/*
+!/Videos/.gitkeep
+
+## Игнорировать большие медиафайлы
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.wmv
+*.flv
+*.webm
+*.ts
+*.m3u8
+
+## Игнорировать временные файлы
+*.tmp
+*.temp
+*.log
+*.cache
+*.pid
+*.seed
+*.pid.lock
+
+## Игнорировать системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+## Игнорировать зависимости
+node_modules/
+packages/
+*.nupkg
+
+## Игнорировать файлы IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+## Игнорировать Docker файлы (кроме docker-compose и Dockerfile)
+docker-compose.override.yml
+*.dockerignore
+Dockerfile.dev
+
+## Игнорировать базы данных
+*.db
+*.mdf
+*.ldf
+
+## Игнорировать архивы
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+## Игнорировать SSL сертификаты
+*.pfx
+*.p12
+*.crt
+*.key
+
+## Игнорировать секреты
+secrets.json
+.env
+*.env.local
