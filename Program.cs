@@ -1,16 +1,16 @@
-using MovieService.Services;
+using StreamingServer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Добавляем сервисы
+// Р”РѕР±Р°РІР»СЏРµРј СЃРµСЂРІРёСЃС‹
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Регистрируем наши сервисы
+// Р РµРіРёСЃС‚СЂРёСЂСѓРµРј РЅР°С€Рё СЃРµСЂРІРёСЃС‹
 builder.Services.AddSingleton<IVideoService, VideoService>();
 
-// Добавляем CORS для доступа с любого клиента
+// Р”РѕР±Р°РІР»СЏРµРј CORS РґР»СЏ РґРѕСЃС‚СѓРїР° СЃ Р»СЋР±РѕРіРѕ РєР»РёРµРЅС‚Р°
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowAll", policy => {
         policy.AllowAnyOrigin()
@@ -19,7 +19,7 @@ builder.Services.AddCors(options => {
     });
 });
 
-// Настройка Kestrel для больших файлов
+// РќР°СЃС‚СЂРѕР№РєР° Kestrel РґР»СЏ Р±РѕР»СЊС€РёС… С„Р°Р№Р»РѕРІ
 builder.WebHost.ConfigureKestrel(options => {
     options.Limits.MaxRequestBodySize = null;
     options.Limits.MaxRequestBufferSize = null;
@@ -27,7 +27,7 @@ builder.WebHost.ConfigureKestrel(options => {
 
 var app = builder.Build();
 
-// Конфигурируем pipeline
+// РљРѕРЅС„РёРіСѓСЂРёСЂСѓРµРј pipeline
 if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
@@ -35,22 +35,22 @@ if (app.Environment.IsDevelopment()) {
 
 app.UseHttpsRedirection();
 
-// Важно: порядок middleware имеет значение
+// Р’Р°Р¶РЅРѕ: РїРѕСЂСЏРґРѕРє middleware РёРјРµРµС‚ Р·РЅР°С‡РµРЅРёРµ
 app.UseCors("AllowAll");
 
-app.UseStaticFiles(); // для wwwroot папки
+app.UseStaticFiles(); // РґР»СЏ wwwroot РїР°РїРєРё
 
 app.UseAuthorization();
 
 app.MapControllers();
 
-// Создаем папку для видео, если её нет
+// РЎРѕР·РґР°РµРј РїР°РїРєСѓ РґР»СЏ РІРёРґРµРѕ, РµСЃР»Рё РµС‘ РЅРµС‚
 var videosPath = Path.Combine(app.Environment.ContentRootPath, "Videos");
 if (!Directory.Exists(videosPath)) {
     Directory.CreateDirectory(videosPath);
 }
 
-// Логируем пути для отладки
+// Р›РѕРіРёСЂСѓРµРј РїСѓС‚Рё РґР»СЏ РѕС‚Р»Р°РґРєРё
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
 logger.LogInformation("Content Root Path: {Path}", app.Environment.ContentRootPath);
 logger.LogInformation("Videos Path: {Path}", videosPath);
